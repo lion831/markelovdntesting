@@ -1,38 +1,22 @@
-$(function(){
-
-	var oldVal, newVal, id, field;
-	$('.edit').focus(function(){
-		oldVal = $(this).text();
-		id = $(this).data('id');
-		field = $(this).data('name');
-	});
-
-	$('.edit').keypress(function(e){
-		if(e.which == 13){
-			newVal = $(this).text();
-			if(newVal != oldVal){
-				$.ajax({
-					url: 'index.php',
-					type: 'POST',
-					data: {new_val: newVal, id: id, field: field},
-					beforeSend: function(){
-						$('#loader').fadeIn();
-					},
-					success: function(res){
-						$('#mes-edit').text(res).delay(500).fadeIn(1000, function(){
-							$('#mes-edit').delay(1000).fadeOut();
-						});
-					},
-					error: function(){
-						alert('Error!');
-					},
-					complete: function(){
-						$('#loader').delay(500).fadeOut();
-					}
-				});
-			}
-			return false;
-		}
-	});
-
-});
+function activate(element){
+	//alert('clicked')
+	$(element).attr('class','activate')
+}
+	function updateValue(element, column, id){
+	var value = element.innerText
+		$(element).attr('class','processing')
+	//console.log(value+column+id);
+	$.ajax({
+	url:'functions.php',
+	type: 'POST',
+	data: {
+	value: value,
+	column: column,
+	id: id
+},
+	success: function (php_result){
+	console.log(php_result);
+	$(element).removeAttr('class');
+}
+})
+}

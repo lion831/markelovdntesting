@@ -1,11 +1,9 @@
 <?php 
+try{
+    $db = new pdo('mysql:host=localhost;dbname=legion_localhost;charset=utf8','root','root');
+}
+catch (PDOException $e){
+    die($e->getMessage());
+}
 
-define("DBHOST", 'localhost');
-define("DBUSER", 'root');
-define("DBPASS", '');
-define("DBNAME", 'test');
-
-$db = @mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME) or die("Нет соединения с БД");
-mysqli_set_charset($db, "utf8") or die("Не установлена кодировка соединения");
-
-?>
+$con = mysqli_connect("localhost", "root", "root", "legion_localhost");
