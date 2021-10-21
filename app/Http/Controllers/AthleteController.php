@@ -14,6 +14,7 @@ class AthleteController extends Controller
     public function index() {
         $coaches = Coach::find(1)->athletes;
         dd($coaches);
+        dasdadsdsa
 
     }
 
