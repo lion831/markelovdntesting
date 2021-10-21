@@ -9,5 +9,10 @@ class Athlete extends Model
 {
     use HasFactory;
 
+    public function coaches()
+    {
+        return $this->belongsTo(Coach::class, 'id', 'realcoaches_id');
+    }
+
 
 }
