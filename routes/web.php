@@ -20,6 +20,4 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::resource('/athlete', AthleteController::class);
-//Route::resource('/athlete/create', AthleteController::class);
 Route::resource('/coach', CoachController::class);
-//Route::get('/athlete', [AthleteController::class, 'index']);
